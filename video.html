@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+
+  <script
+    src="http://image.bitautoimg.com/mergejs,s=/video/live/js/jquery-1.11.3.min.js,/video/live/js/tab.js?v=20171128"
+    type="text/javascript"></script>
+  <script
+    src="http://image.bitautoimg.com/mergejs,s=/video/live/js/jquery-1.11.3.min.js,/video/live/js/tab.js?v=20171128"
+    type="text/javascript"></script>
+  <link rel="stylesheet" type="text/css"
+    href="//image.bitautoimg.com/uimg/css/00060/yiche_2016_cube_shipinzhibo-20190422092524-1352.css" media="all" />
+  <script type="text/javascript">
+    var isFull = false;
+    var dutation = Number("0");
+    var chatUrl = "http://olc.yiche.com";
+    var baseUrl_DM = "http://api.admin.bitauto.com/barrage/api/";
+    startTimer = 0;
+    dutation = dutation <= 0 ? 100000 : dutation;
+    window.currentPlayTime = 0;
+    window.LoginUserId = 0;
+    window.LoginUserName = "";
+    window.currentPlayTime = 5748;
+
+    var totalVisitNum = Number("4483");
+
+    //网页全屏时iframe调用方法
+    window.toggleWebFull = function (inFull) {
+      isFull = inFull;
+      if (inFull) {
+        $(".BITAUTO-Unit").addClass("BITAUTO-FullScreen full-screen-btn");
+        document.body.onmousewheel = function () {
+          return false;
+        };
+        document.body.style.overflow = "hidden";
+      } else {
+        $(".BITAUTO-Unit").removeClass("BITAUTO-FullScreen full-screen-btn");
+        http: //pic.baa.bitautotech.com/newavatar/120.jpg
+          document.body.onmousewheel = function () {
+            return true;
+          };
+        document.body.style.overflow = "visible";
+      }
+      resizeChatBox();
+    }
+    //直播时开始时iframe子页面调用的方法,滚动弹幕列表到最上方时加载历史弹幕数据
+    window.startLiving = function () {
+      startSetTime("#time");
+      $("#playTxtBox").scroll(function () {
+        if (this.scrollTop == 0) {
+          try {
+            videoIframe && videoIframe.window && videoIframe.window.loadStoryData && videoIframe.window
+              .loadStoryData(false, true);
+          } catch (err) {}
+
+        }
+      })
+    }
+    //iframe子页面调用的历史数据显示
+    window.loadStoryData = function (data, preLoad) {
+      if (typeof inputDm == "undefined") {
+        setTimeout(function () {
+          loadStoryData(data, preLoad)
+        }, 500);
+      } else {
+        inputDm && inputDm.chatListAppend(data, preLoad);
+      }
+    }
+
+    //iframe子页面调用的禁言接口
+    window.disableSend = function (dis, placehold) {
+      if (typeof inputDm == "undefined") {
+        setTimeout(function () {
+          disableSend(dis, placehold)
+        }, 500);
+      } else {
+        inputDm && inputDm.disableSend(dis, placehold)
+      }
+    }
+
+
+
+    function startSetTime(elemId) {
+      stopSetTime();
+      startTimer = setInterval(function () {
+        $(elemId).html("已开始 " + formatTime(window.currentPlayTime++))
+      }, 1000);
+    }
+
+    function stopSetTime() {
+      (startTimer > 0) && clearInterval(startTimer);
+    }
+
+    function formatNumber(num) {
+      var boundaryValue = 10000;
+      var result = "";
+      if (num < boundaryValue) {
+        result = num.toString();
+      } else {
+        var total = num / boundaryValue;
+        result = total.toFixed(2) + "万";
+      }
+      return result;
+    }
+
+    function formatTime(seconds) {
+      var guide = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : seconds;
+
+      seconds = seconds < 0 ? 0 : seconds;
+      var s = Math.floor(seconds % 60);
+      var m = Math.floor(seconds / 60 % 60);
+      var h = Math.floor(seconds / 3600);
+      var gm = Math.floor(guide / 60 % 60);
+      var gh = Math.floor(guide / 3600);
+
+      // handle invalid times
+      if (isNaN(seconds) || seconds === Infinity) {
+        // '-' is false for all relational operators (e.g. <, >=) so this setting
+        // will add the minimum number of fields specified by the guide
+        h = m = s = '-';
+      }
+
+      // Check if we need to show hours
+      h = h > 0 || gh > 0 ? h + ':' : '';
+
+      // If hours are showing, we may need to add a leading zero.
+      // Always show at least one digit of minutes.
+      m = ((h || gm >= 10) && m < 10 ? '0' + m : m) + ':';
+
+      // Check if leading zero is need for seconds
+      s = s < 10 ? '0' + s : s;
+
+      return h + m + s;
+    }
+  </script>
+</head>
+
+<body>
+  <div class="zb-content-box ">
+    <div class="zb-play-box">
+      <!-- 标题 start  -->
+      <div class="zb-tit-box">
+        <div class="tit-box">
+          <div class="img-box">
+            <a target="_blank" href="http://i.yiche.com/u27750261/!video/publish/" data-channelid="4.179.1797">
+              <i id="tipV" class="rz-h" style="display:none"></i>
+              <img id="hostUserImg" src="http://pic.baa.bitautotech.com/newavatar/120.jpg" alt="">
+            </a>
+          </div>
+          <div class="txt-box">
+            <h1>
+              &#38271;&#22478;&#28846;&#21830;&#29992;&#30382;&#21345;&#20840;&#22269;&#19978;&#24066;&#21457;&#24067;&#20250;
+            </h1>
+            <p class="zb-info">
+              <span>主播：<a target="_blank" href="http://i.yiche.com/u27750261/!video/publish/"
+                  data-channelid="4.179.1797">新车驾到</a>
+                <i id="ycbj" class="rz-author-b" style="display:none">易车编辑</i>
+              </span>
+              <a href="javascript:void(0)" class="gz-btn" id="guanzhu" data-channelid="4.179.1795"><i
+                  class="zb-bg-img"></i>关注</a>
+
+
+              <span></span>
+              <span>观看人数：<span id="totalvisit">4483</span></span>
+            </p>
+          </div>
+        </div>
+        <div class="zb-qt-box">
+          <a class="btn-box share-btn" href="javascript:" data="share" data-channelid="4.179.1796"><i
+              class="zb-bg-img"></i>分享</a>
+          <span class="btn-box tim-box"><i class="zb-bg-img"></i><span id="time">已开始 01:35:48</span></span>
+          <!-- 分享弹层 start  -->
+          <div id="shareContent" class="share-cont-box" style="display: none;">
+            <div class="share-wrap">
+              <div class="share-cont">
+                <div class="lef-b bdsharebuttonbox " data-tag="share_1">
+                  <a class="wx" data-cmd="weixin" title="分享到微信" href="#">微&nbsp;信</a>
+                  <a class="wb" data-cmd="tsina" title="分享到新浪微博" href="#">微&nbsp;博</a>
+                  <a class="kj" data-cmd="qzone" title="分享到QQ空间" href="#">QQ空间</a>
+                </div>
+                <div id="qrcode" class="rig-b">
+                </div>
+              </div>
+              <div class="t-txt-box">
+                <p class="tit">贴到论坛或微博</p>
+                <div class="cont">
+
+                  <input id="videoText" type="text" readonly="readonly" class="inp-sty"
+                    value="&lt;iframe src=&quot;http://live.yiche.com/live/share_16477.html&quot; allowtransparency=&quot;true&quot; allowfullscreen=&quot;true&quot; scrolling=&quot;no&quot; border=&quot;0&quot; frameborder=&quot;0&quot; width=&quot;630px&quot; height=&quot;405px;&quot;&gt;&lt;/iframe&gt;" />
+                  <a id="copyVideo" class="btn btn-primary btn-sm" href="javascript:void(0);">复制</a>
+                </div>
+
+                <p id="copyFailed"
+                  style="line-height: 20px; padding: 5px 0 0; font-size: 12px; color: #c00; display: none;">
+                  抱歉，您使用的浏览器不支持自动复制到剪贴板，请手动复制Ctrl+C
+                </p>
+                <p id="copySuccess"
+                  style="line-height: 20px; padding: 5px 0 0; font-size: 12px; color: #999; background: url(http://img4.bitautoimg.com/uimg/index2014/shipin/images/cg-img.png) no-repeat left 6px; padding-left: 20px; display: none;">
+                  已经复制到您的剪贴板
+                </p>
+              </div>
+            </div>
+          </div>
+          <script type="text/javascript">
+            window._bd_share_config = {
+              "common": {
+                "bdSnsKey": {},
+                "bdText": "",
+                "bdMini": "2",
+                "bdPic": "",
+                "bdStyle": "0",
+                "bdSize": "16",
+                "onAfterClick": function () {
+
+                }
+              },
+              "share": {}
+            };
+            with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src =
+              'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+          </script>
+          <!-- 分享弹层 end  -->
+        </div>
+      </div>
+      <!-- 标题 end  -->
+      <div class="player-box">
+        <div id="dmContainer" class="player-warp-box dm-line-txt BITAUTO-Unit">
+          <div id="vidbox" class="play-left-box">
+            <iframe width="100%" height="100%" id="videoIframe" name="videoIframe"
+              src="http://live.yiche.com/web/pc/live/ShowIframe?liveid=16477&viewname=IframeNormShow&support=1&dm=1"
+              frameborder="0" allowfullscreen="true" scrolling="no"></iframe>
+          </div>
+          <div class="play-right-box">
+            <div class="tab-rig-box tab1">
+              <!--tab nav start -->
+              <div class="tab-nav">
+                <ul>
+                  <li class="active">
+                    <a href="javascript:void 0">互动</a>
+                    <i></i>
+                  </li>
+                  <li class="">
+                    <a href="javascript:void 0">简介</a>
+                  </li>
+                </ul>
+              </div>
+              <!--tab nav end -->
+              <!--tab content start -->
+
+              <div class="tab-content">
+                <div style="display: block;">
+                  <div class="dm-warp-box ">
+                    <div class="play-txt-box" id="playTxtBox">
+                      <ul id="chatList"></ul>
+                    </div>
+                  </div>
+                  <!-- 发表 start  -->
+                  <div class="pub-box">
+                    <div class="pub-wrap">
+                      <div class="txt-inp">
+                        <span id="maxLengthTip">30</span>
+                        <textarea id="sendInput" maxlength="30" name="" class="inp-sty" style="color: #000"
+                          placeholder="&#x53D1;&#x5E03;&#x5F39;&#x5E55;&#x4E92;&#x52A8;&#x968F;&#x673A;&#x62BD;&#x5956;"></textarea>
+                      </div>
+                      <a id="sendBtn" class="fb-btn" href="javascript:;">发<br>送</a>
+                    </div>
+                  </div>
+                  <!-- 发表 end  -->
+                </div>
+                <!---->
+                <div style="display:  none;">
+                  <div class="jj-info-box">
+                    河南&#183;开封
+                    新一代智能商用大皮卡
+                    以百倍效率，为创富升级
+                    宜商宜家，助力精彩生活
+                  </div>
+                </div>
+              </div>
+              <!--tab content end -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    var dmData = {
+      dataUrl: baseUrl_DM + "Video/GetLastBarrages",
+      finish: false,
+      segment: null,
+      videoData: {
+        VideoUniqueId: "b208e679-7dcb-49fc-9b55-de72f50465ee",
+        VideoId: "16477",
+        VideoTitle: "长城炮商用皮卡全国上市发布会",
+        VideoType: "3",
+        s: 0,
+        e: 0,
+        Source: "100",
+        Duration: dutation,
+        VideoKind: "2"
+      }
+    };
+
+    function resizeChatBox() {
+      var height = "";
+      if (isFull) {
+        height = $(window).height() - 180;
+      }
+      $("#playTxtBox").height(height);
+      var chatList = $("#chatList");
+      chatList.parent().scrollTop(chatList.height());
+
+    }
+
+
+
+    $(function () {
+      //弹幕举报处理-----------start-------------------
+      function checkLogin(fu) {
+        var isLogin = false;
+        if (typeof Bitauto != "undefined") {
+          isLogin = !!Bitauto.Login.result ? Bitauto.Login.result.isLogined : false;
+          if (!isLogin) {
+            //未登录，调用弹出登录层接口登录
+            if (typeof fu == "function") {
+              Bitauto.Login.afterLoginDo(function () {
+                fu();
+                window.LoginUserId = Bitauto.Login.result.userId;
+                window.LoginUserName = Bitauto.Login.result.showName;
+              });
+            } else {
+              Bitauto.Login.afterLoginDo(function () {
+                window.LoginUserId = Bitauto.Login.result.userId;
+                window.LoginUserName = Bitauto.Login.result.showName;
+              });
+            }
+          } else {
+            window.LoginUserId = Bitauto.Login.result.userId;
+            window.LoginUserName = Bitauto.Login.result.showName;
+          }
+        }
+        return isLogin;
+      }
+
+      //弹幕举报处理-----------end-------------------
+      //发送弹幕处理-----------start-----------------
+      inputDm = {
+        option: {
+          txtTextStyleColor: "#000000",
+          color: "#ff0000",
+          txtTextTimer: 0,
+          placeholder: "",
+          mess: "",
+          disabled: false
+        },
+        chatListAppend: function (data, preLoad) {
+          var htmlList = [];
+          if (typeof data == "string") {
+            htmlList.push(data);
+          } else if (typeof data == "object") {
+            if (data instanceof Array || Array.isArray(data)) {
+              $.each(data, function (ind, ite) {
+                htmlList.push('<li><span class="name"><a  target="_blank" href="http://i.yiche.com/u' + ite
+                  .userId + '/!video/publish/">' + ite.userName +
+                  '</a><i>：</i></span><span class="content">' + ite.text.replace(/</g, "").replace(/>/g,
+                    "") + '</span></li>');
+              });
+            } else
+            if (data instanceof Object) {
+              data.style = data.style || "";
+              htmlList.push('<li><span class="name"><a  target="_blank" href="http://i.yiche.com/u' + data
+                .userId + '/!video/publish/">' + data.userName + '</a><i>：</i></span><span class="content" ' +
+                data.style + '>' + data.text.replace(/</g, "").replace(/>/g, "") + '</span></li>');
+            }
+          }
+          if (preLoad) {
+            var scrolltop = $("#chatList").height();
+            $("#chatList").prepend(htmlList.join(" "));
+            scrolltop = $("#chatList").height() - scrolltop;
+            $("#chatList").parent().scrollTop(scrolltop);
+          } else {
+            $("#chatList").append(htmlList.join(" "));
+            $("#chatList").parent().scrollTop($("#chatList").height());
+          }
+
+        },
+        init: function () {
+          var txtText = $("#sendInput")[0];
+          var sendBtn = $("#sendBtn")[0];
+          var chatList = $("#chatList");
+          var maxLength = $(txtText).attr("maxlength") || 30;
+          var option = this.option;
+
+          var chatListAppend = this.chatListAppend;
+          var timer = 0,
+            times = 0;
+
+          function txtTextValue(mes) {
+            option.color = "#ff0000";
+            var mesTxt = mes || option.placeholder;
+            if (mesTxt.indexOf("发布弹幕互动随机抽奖") >= 0) option.color = "#999999";
+            txtText.style.color = option.color;
+            option.txtTextStyleColor = option.color;
+            txtText.value = mesTxt;
+            $("#maxLengthTip").html(maxLength);
+          }
+
+          function sendTxt(txt) {
+            if (!option.disabled) {
+              if (checkLogin()) {
+                if (txtText.disabled) return;
+                if (/^!/.test(txt) || txt == "" || txt.replace(/(^\s*)|(\s*$)/g, "").length == 0 || option
+                  .txtTextStyleColor != "#000000") {
+                  txtTextValue("发送内容不能为空哦")
+                  option.txtTextTimer = setTimeout(function () {
+                    txtTextValue()
+                  }, 3000);
+                  return;
+                }
+                if (times > 0) {
+                  txtTextValue("抱歉，同一内容5秒内只能发表一次哦，请稍候再试吧！");
+                  option.txtTextTimer = setTimeout(function () {
+                    txtTextValue("发布弹幕互动随机抽奖")
+                  }, (5 - times) * 1000);
+                  return;
+                }
+                txtText.disabled = "disabled";
+                option.mess = txt = txt.substring(0, maxLength);
+                var time = currentPlayTime || 0;
+                ChatYC && ChatYC.pub("barrage", txt, time, function (xhr, status, error) {
+                  var err = JSON.parse(xhr.responseText);
+                }, function (data) {
+                  var succTip = $("#succTip")[0];
+                  if (data) {
+                    if (data.code == 2) {} else if (data.code == 4) {
+                      option.placeholder = "系统提示，您已被禁言，发送弹幕将被忽略！";
+                      txtTextValue();
+                      return;
+                    } else if (data.code == 5) {
+                      succTip && (succTip.innerHTML = "非法字符", succTip.style.display = "block");
+                      setTimeout(function () {
+                        succTip && (succTip.style.display = "none");
+                      }, 2000);
+                    } else {
+                      succTip && (succTip.innerHTML = "发送成功", succTip.style.display = "block");
+                      setTimeout(function () {
+                        succTip && (succTip.style.display = "none");
+                      }, 2000);
+                    }
+                  }
+                  if (option.placeholder == "系统提示，您已被禁言，发送弹幕将被忽略！") {
+                    option.placeholder = "发布弹幕互动随机抽奖";
+                  }
+                  txtTextValue();
+                });
+                //times = 1;
+                focus();
+                option.placeholder = "发布弹幕互动随机抽奖(5)";
+                txtTextValue();
+                clearInterval(timer);
+                timer = setInterval(function () {
+                  times++;
+                  txtText.value = "发布弹幕互动随机抽奖(" + (5 - times) + ")";
+                  if (times >= 5) {
+                    txtText.value = "发布弹幕互动随机抽奖";
+                    txtText.disabled = "";
+                    times = 0;
+                    clearInterval(timer);
+                  }
+                }, 1000);
+              }
+            }
+          }
+
+          function focus() {
+            checkLogin();
+            if (option.txtTextStyleColor != "#000000") {
+              if (option.txtTextTimer) clearInterval(option.txtTextTimer);
+              txtText.style.color = "#000000";
+              option.txtTextStyleColor = "#000000";
+              txtText.value = "";
+            }
+          };
+
+          $(txtText).on("keydown", function (e) {
+            if (e && e.keyCode === 13) {
+              sendTxt(this.value);
+              e.preventDefault();
+            } else {
+              if (option.txtTextStyleColor != "#000000") {
+                focus();
+              }
+            }
+          });
+          $(txtText).on("keyup", function (e) {
+            if (e && e.keyCode === 13) return;
+            var len = maxLength - this.value.length;
+            len = Math.max(len, 0);
+            $("#maxLengthTip").html(len);
+          })
+          $(sendBtn).on("click", function () {
+            sendTxt($(txtText).val());
+          })
+          $(txtText).on("focus", focus);
+          $(txtText).on("blur", function () {
+            if (txtText.value == "") {
+              txtTextValue();
+            }
+          });
+        },
+        disableSend: function (dis, placehold) {
+          this.option.disabled = dis;
+          var txtText = $("#sendInput")[0];
+          var sendBtn = $("#sendBtn")[0];
+          if (dis) {
+            $("#sendBtn").addClass("btn-disable");
+            txtText.disabled = "disabled";
+          } else {
+            $("#sendBtn").removeClass("btn-disable");
+            txtText.disabled = "";
+          }
+          if (placehold) {
+            this.option.placeholder = placehold;
+            txtText.style.color = "#ff0000";
+            this.option.txtTextStyleColor = "#ff0000";
+            txtText.value = this.option.placeholder;
+          }
+        }
+      }
+      inputDm.init();
+
+      //发送弹幕处理-----------end-------------------
+
+      //实时消息--------------------------
+      ChatYC.init({
+        videoUniqueId: dmData.videoData.VideoUniqueId,
+        videoId: dmData.videoData.VideoId
+      }, function (message) {
+        //收到消息执行
+        if (message.type == 'login') {
+          inputDm.chatListAppend(
+            '<li class="ts"><span class="name"><a target="_blank" href="http://i.yiche.com/u' + message.data
+            .userId + '/!video/publish/">' + message.data.showName + '</a></span>&nbsp进入房间</li>');
+        } else if (message.type == 'barrage') {
+          inputDm.chatListAppend({
+            userId: message.data.userId,
+            userName: message.data.showName,
+            text: message.data.text
+          });
+        } else if (message.type == 'support') {} else if (message.type == 'totalvisit') {
+          if (totalVisitNum > Number(message.data.count)) return;
+          totalVisitNum = Number(message.data.count);
+          $("#totalvisit").html(formatNumber(message.data.count));
+
+        } else if (message.type == 'livestatus') {
+          if (message.data.status == 1) {
+            $("#downapp").html("上易车app看直播，更流畅");
+          }
+          if (message.data.status == 3) {
+            stopSetTime();
+            $("#ygDiv").show();
+          }
+        }
+      }, chatUrl);
+
+      $(window).on("resize", function () {
+        resizeChatBox();
+      })
+    })
+  </script>
+  <!-- 直播 end  -->
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+.main .main-video {
+  height: 757px;
+  background: url(../images/top.png);
+  background-position: center;
+  text-align: center;
+}
+.main .main-video .video {
+  display: inline-block;
+  width: 601px;
+  height: 338px;
+  bottom: 32px;
+  transform: translate(-30px, 386px);
+}
+.main .main-video .video video {
+  width: 100%;
+  height: 100%;
+}
+.main .main-body {
+  background: #B21C06;
+  padding-bottom: 40px;
+  transform: translateY(-3px);
+  padding-top: 60px;
+}
+.main .main-body .wrapper {
+  width: 1200px;
+  margin: 0 auto;
+}
+.main .main-body .wrapper ul li {
+  width: 270px;
+  height: 259px;
+  background-color: white;
+  float: left;
+  margin-right: 39px;
+  margin-bottom: 29px;
+  box-sizing: border-box;
+}
+.main .main-body .wrapper ul li .video {
+  display: inline-block;
+  width: 270px;
+  height: 150px;
+  position: relative;
+}
+.main .main-body .wrapper ul li .video strong {
+  width: 46px;
+  height: 46px;
+  display: block;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: url(http://image.bitautoimg.com/2016/pc1200/img/icon-video.png) 0 0 no-repeat;
+}
+.main .main-body .wrapper ul li .video-info {
+  box-sizing: border-box;
+  padding: 5px 10px;
+}
+.main .main-body .wrapper ul li .video-info h3 {
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 700;
+}
+.main .main-body .wrapper ul li .video-info h3 a {
+  display: inline-block;
+  height: 40px;
+  line-height: 22px;
+  width: 250px;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.main .main-body .wrapper ul li .video-info i {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.main .main-body .wrapper ul li .video-info span {
+  font-size: 14px;
+  color: #D8D8D8;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+.main .main-body .wrapper ul :nth-child(4) {
+  margin-right: 0;
+}
+.main .main-body .wrapper ul :nth-child(8) {
+  margin-right: 0;
+}
+.main .main-body .wrapper ul :nth-child(12) {
+  margin-right: 0;
+}
+.main .main-body .wrapper .timer {
+  width: 100%;
+  height: 2560px;
+  background: url(../images/beijing.png);
+  margin-top: 15px;
+  margin-bottom: 40px;
+}
+.main .main-body .wrapper .timer .title {
+  width: 700px;
+  margin: 0 auto;
+}
+.main .main-body .wrapper .timer .title .left {
+  width: 84px;
+  height: 31px;
+  margin-top: 40px;
+  transform: translateX(-10px);
+  background: url(../images/logo2.png) no-repeat;
+}
+.main .main-body .wrapper .timer .title .right {
+  width: 44px;
+  transform: translateY(23px) translateX(-22px);
+  height: 16px;
+  background: url(../images/logo1.png) no-repeat;
+}
+.main .main-body .wrapper .timer .title h2 {
+  float: left;
+  color: #fff;
+  font-size: 36px;
+  margin-top: 30px;
+  text-align: center;
+}
+.main .main-body .wrapper .timer p {
+  text-align: center;
+  color: #FFD37C;
+  margin-top: 5px;
+  margin-bottom: 60px;
+}
+.main .main-body .wrapper .timer .timer-image {
+  text-align: center;
+}
+.main .main-body .wrapper .timer .timer-image img {
+  margin: 0 auto;
+}
+.main .main-body .wrapper .timer .btmlogo {
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 150px;
+}
